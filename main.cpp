@@ -1,10 +1,10 @@
 #include <iostream>
 
-#include "day1.h"
+#include "day.h"
 
-int main()
+int main(int argc, char **argv)
 {
-    Day1::run();
+    runDay5(argc, argv);
 
     return 0;
 }
