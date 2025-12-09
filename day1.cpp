@@ -4,9 +4,9 @@
 
 #include <iostream>
 
-void runDay1()
+void runDay1(int argc, char**argv)
 {
-    const std::filesystem::path filename = "./input2";
+    const std::filesystem::path filename = argv[1];
     std::string input = util::readFile(filename);
 
     int x = 50; // starting point
@@ -21,21 +21,18 @@ void runDay1()
 
         int old_x = x;
         int new_val;
-        switch(curr.at(0))
-        {
-            case 'L':
-                new_val = x - (std::stoi(curr.substr(1)) % 100);
-                x = (new_val + 100) % 100;
-                break;
-            case 'R':
-                new_val = x + (std::stoi(curr.substr(1)) % 100);
-                x = new_val % 100;
-                break;
-        }
-        std::cout << old_x << " " << new_val << " " << x << std::endl;
+            
+        int turn = std::stoi(curr.substr(1));
+        answer2 += turn / 100;
+        turn %= 100;
+        
+        if(curr.at(0) == 'L') new_val = x - turn;
+        else new_val = x + turn;
 
-        answer  += (x == 0);
-        answer2 += (x == 0) || (old_x != 0 && x != new_val) ;
+        x = (new_val+100) % 100;
+
+        answer += (x == 0);
+        answer2 += x == 0 || (old_x != 0 && (new_val < 0 || new_val > 100));
     }
     std::cout << "Answer: " << answer << " " << answer2 << std::endl;
 }
