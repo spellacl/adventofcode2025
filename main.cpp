@@ -4,7 +4,7 @@
 
 int main(int argc, char **argv)
 {
-    runDay8(argc, argv);
+    runDay2(argc, argv);
 
     return 0;
 }

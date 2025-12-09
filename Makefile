@@ -3,7 +3,7 @@ TARGET=main
 
 CFLAGS = -std=c++20
 
-SOURCES = util.o day1.o \
+SOURCES = util.o day1.o day2.o \
           day5.o day8.o main.o
 
 all: $(TARGET)
